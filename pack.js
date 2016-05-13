@@ -45,7 +45,8 @@ util.inherits(Sink, Writable)
 Sink.prototype._write = function (data, enc, cb) {
   this.written += data.length
   if (this._to.push(data)) return cb()
-  this._to._drain = cb
+  // this._to._drain = cb
+  return cb()
 }
 
 Sink.prototype.destroy = function () {
